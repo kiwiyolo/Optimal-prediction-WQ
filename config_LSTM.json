@@ -1,0 +1,64 @@
+{
+	"data": {
+		"filename": "data_rs02_wq_all_25D.txt",
+		"columns": [
+  		  "高锰酸盐指数(mg/L)","化学需氧量(mg/L)", "总磷(mg/L)","氨氮(mg/L)", "溶解氧(mg/L)","生化需氧量(mg/L)"
+		],
+		"sequence_length": 1,
+		"train_test_split": 0.7,
+		"normalise": false
+	},
+	"training": {
+		"epochs": 100,
+		"batch_size": 12
+	},
+	"model": {
+		"loss": "self_loss",
+		"weight_factor": 0.1,
+		"optimizer": "adam",
+		"save_dir": "./kw_03_saved_models",
+		"metrics": "mean_squared_error",
+		"layers": [
+
+			{
+				"type": "lstm",
+				"neurons": 20,
+				"input_timesteps":1,
+				"input_dim": 5,
+				"return_seq": true,
+				"activation": "relu",
+				"name": "lstm1_1"
+			},
+			{
+				"type": "dropout",
+				"rate": 0.3,
+				"name": "drop1_1"
+			},
+			{
+				"type": "lstm",
+				"neurons": 25,
+				"return_seq": true,
+				"activation": "relu",
+				"name": "lstm1_2"
+			},
+			{
+				"type": "dropout",
+				"rate": 0.3,
+				"name": "drop1_2"
+			},
+			{
+				"type": "lstm",
+				"neurons": 30,
+				"return_seq": false,
+				"activation": "relu",
+				"name": "lstm1_3"
+			},
+			{
+				"type": "dense",
+				"neurons": 1,
+				"activation": "relu",
+				"name": "dense1_1"
+			}
+		]
+	}
+}
