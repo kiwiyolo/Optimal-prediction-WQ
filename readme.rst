@@ -1,6 +1,12 @@
 ===============================
 Instructional document
 ===============================
+Here is the description of the model structure:
+
+.. image:: kw_05_plot/model_structure.png
+   :alt: Alternative text describing the figure
+   :width: 600px
+   :align: center
 
 
 config_BP.json			        BP neural network framework, dataset and parameters
